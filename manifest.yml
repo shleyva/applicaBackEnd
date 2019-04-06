@@ -1,0 +1,6 @@
+---
+applications: 
+- name: Applica
+  memory: 128M
+  instances: 1
+  command: npm run dev
