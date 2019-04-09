@@ -1,0 +1,32 @@
+<h1>Agrega una nueva vacante</h1>
+
+<form action="/vacant/addform" method = "POST">
+
+<label for="name">Título de la vacante</label>
+<input type="text" name="name">
+<br>
+<label for="description">Descripción</label>
+<input type="text" name="description">
+<br>
+<label for="location">Ubicación</label>
+<input type="text" name ="location">
+
+<br>
+<label for="type">Tipo de Vacante:</label><br>
+<input type="radio" name="type" value ="Servicio Social"> Servicio Social <br>
+<input type="radio" name ="type" value = "Voluntariado Larga Estancia"> Voluntariado Larga Estancia <br>
+<input type="radio" name ="type" value = "Voluntariado Corta Estancia"> Voluntariado Corta Estancia <br>
+<input type="radio" name ="type" value = "Voluntariado Corporativo"> Voluntariado Corporativo <br>
+
+<br>
+<label for="goal">Meta del Proyecto</label>
+<input type="text" name="goal">
+
+<br>
+<label for="background">Trayectoria profesional</label>
+<input type="text" name="background">
+
+
+
+<button type="submit"> Guardar! </button>
+</form>

@@ -1,0 +1,9 @@
+<h1>Vacantes Disponibles</h1>
+
+<div class = "vacantCard">
+    {{#each vacant}}
+        <h3><a href="vacantList/{{this._id}}">{{this.name}}</a></h3>
+        <h5>Descripción: {{this.description}}</h5>
+        <h5>Location: {{this.location}}</h5>
+    {{/each}}
+</div>

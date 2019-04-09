@@ -2,9 +2,7 @@
 
 <div class = "ngoCard">
     {{#each ngo}}
-        <h3>{{this.ngoName}}</h3>
+        <h3><a href="ngoList/{{this._id}}">{{this.ngoName}}</a></h3>
         <h5>Description: {{this.description}}</h5>
-        <h6>Rep: {{this.rep}}</h6>
-        <h6> Location: {{this.location}}</h6>
     {{/each}}
 </div>

@@ -36,7 +36,7 @@ router.post('/project/add', (req,res)=>{
   .catch(err=>console.log(err))
 })
 
-//Agregar Vacante
+//Agregar Vacante via Postman
 
 router.post ('/vacant/add', (req,res)=>{
   const {parentProject, name, description, location, type, goal, target, background, startDate, endDate, provided, notes, specConditions, activities} = req.body;
@@ -71,19 +71,48 @@ Ngo.find()
 .catch(err=>{console.log(err)});
 });
 
+//Ruta para lista de vacantes
+router.get('/vacantList', (req,res)=>{
+Vacant.find()
+.then(vacant=>{
+  return res.render('vacantlist',{vacant})
+})
+.catch(err=>{console.log(err)});
+})
+
+
+
+//Ruta para añadir vacantes vía Body
+router.post ('/vacant/addform', (req,res)=>{
+  const {parentProject, name, description, location, type, goal, target, background, startDate, endDate, provided, notes, specConditions, activities} = req.body;
+  const newVacant = new Vacant ({parentProject, name, description, location, type, goal, target, background, startDate, endDate, provided, notes, specConditions, activities})
+  newVacant.save()
+  .then(()=>{
+    console.log("Vacante guardada con éxito")
+    return res.redirect('/vacantList')
+  })
+  .catch(err=>console.log(err))
+})
+
+//Ruta para render de newVacant (Por algunar razón no funciona si va antes de post)
+router.get('/vacantAdd', (req,res)=>{
+  res.render('newVacant')
+})
 
 //Detalle de NGO
 
-router.get('/ngo/detail/:id', (req,res)=>{
-  let NgoId = req.params.id
-  console.log(NgoId); //confirmar que se carga el Id correcto
-  Ngo.findOne({'_id': NgoId})
-  .then((Ngo)=>{
-    res.json(ngo)
-    console.log(ngo.ngoName)
+router.get('/ngoList/:id', (req,res)=>{
+  let ngoId = req.params.id
+  console.log("got ID:" + ngoId);
+  Ngo.findOne({'_id':ngoId})
+  .populate('User')
+  .populate('Project')
+  .then((ngo)=>{
+    res.render('ngo-detail',{ngo})
   })
   .catch((err)=>console.log(err))
 })
+
 
 //GET Applicants (sólo con el ID de la Vacante)
 
