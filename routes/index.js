@@ -60,6 +60,18 @@ router.get('/ngo/list', (req,res)=>{
   .catch(err => {console.log(err)});
 })
 
+//Ruta para view de NGO's
+
+router.get('/ngoList', (req,res)=>{
+Ngo.find()
+.populate("user")
+.then(ngo=>{
+  return res.render('ngoList',{ngo})
+})
+.catch(err=>{console.log(err)});
+});
+
+
 //Detalle de NGO
 
 router.get('/ngo/detail/:id', (req,res)=>{
