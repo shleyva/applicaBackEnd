@@ -3,13 +3,13 @@ const Schema = mongoose.Schema
 
 const ngoSchema = new Schema({
   ngoName: String,
-  rep: {type: Schema.Types.ObjectId, ref: "user"},
+  rep: {type: Schema.Types.ObjectId, ref: "User"},
   description: String,
   location: String,
   activities: [String], //Comparable con Interests en User
   since: String,
   logo: String,
-  projects: [{type: Schema.Types.ObjectId, ref: "project"}],
+  projects: [{type: Schema.Types.ObjectId, ref: "Project"}],
   
 })
 

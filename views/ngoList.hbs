@@ -1,0 +1,8 @@
+<h1>Organizaciones Disponibles</h1>
+
+<div class = "ngoCard">
+    {{#each ngo}}
+        <h3><a href="ngoList/{{this._id}}">{{this.ngoName}}</a></h3>
+        <h5>Description: {{this.description}}</h5>
+    {{/each}}
+</div>
